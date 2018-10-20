@@ -9,13 +9,20 @@ class Tweet {
 
 	//returns either 'live_event', 'achievement', 'completed_event', or 'miscellaneous'
     get source():string {
-        return "unknown";
+        if (this.text.startsWith('Just')) {
+            return 'completed_event'; 
+        } else if (this.text.startsWith('Achieved')){
+            return 'achievement';
+        } else if (this.text.startsWith('Watch')){
+            return 'live_event';
+        } else {
+            return 'miscellaneous';
+        }
     }
 
     //returns a boolean, whether the text includes any content written by the person tweeting.
     get written():boolean {
-        return false;
-        //TODO: identify whether the tweet is written
+        return this.text.includes(' - ');
     }
 
     get writtenText():string {

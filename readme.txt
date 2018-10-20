@@ -6,6 +6,8 @@
 
 2. What online resources did you consult when completing this assignment? (list specific URLs)
 
+- https://coderwall.com/p/flonoa/simple-string-format-in-javascript
+
 
 
 3. What classmates or other individuals did you consult as part of this assignment? What did you discuss?

@@ -36,17 +36,21 @@ class Tweet {
     get activityType():string {
         if (this.source != 'completed_event') {
             return "unknown";
+        } else if (!isNaN(parseFloat(this.text.slice([this.text.indexOf(' a ')+3],-1)))){
+            return this.text.split(' ')[5];
+        } else {
+            return this.text.split(' ')[3];
         }
-        //TODO: parse the activity type from the text of the tweet
-        return "";
     }
 
     get distance():number {
         if(this.source != 'completed_event') {
             return 0;
+        } else if (!isNaN(parseFloat(this.text.slice([this.text.indexOf(' a ')+3],-1)))){
+            return parseFloat(this.text.slice([this.text.indexOf(' a ')+3],-1));
+        } else {
+            return 0;
         }
-        //TODO: prase the distance from the text of the tweet
-        return 0;
     }
 
     getHTMLTableRow(rowNumber:number):string {

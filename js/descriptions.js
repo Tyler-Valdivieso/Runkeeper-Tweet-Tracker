@@ -5,6 +5,22 @@ function parseTweets(runkeeper_tweets) {
 		return;
 	}
 
+    tweet_array = runkeeper_tweets.map(function(tweet) {
+		return new Tweet(tweet.text, tweet.created_at);
+	});
+    
+    var written_tweets = [];
+    
+    for (var item = 0, len = tweet_array.length, text = ""; item < len; item++){
+        if (tweet_array[item].written == true){
+            written_tweets.push(tweet_array[item]);
+        }
+    }
+    
+    
+    
+    $('#searchCount').text(written_tweets.length);
+    
 	//TODO: Filter to just the written tweets
 }
 

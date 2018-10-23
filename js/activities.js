@@ -11,16 +11,28 @@ function parseTweets(runkeeper_tweets) {
     
     var dict = {};
     
-    
+
     for (var item = 0, len = tweet_array.length, text = ""; item < len; item++){
-        if (!(tweet_array[item].activityType in Object.keys(dict))){
+        if (!(tweet_array[item].activityType in dict)){
             dict[tweet_array[item].activityType] = 1;
         } else {
             dict[tweet_array[item].activityType] += 1;
         }
     }
     
-   $('#numberActivities').text(Object.keys(dict));
+    var sorted_activites = Object.keys(dict).map(function(key) {
+        return [key, dict[key]];
+    });
+    sorted_activites.sort(function(first, second) {
+        return second[1] - first[1];
+    });
+    
+    
+   
+    $('#numberActivities').text(Object.keys(dict).length);
+    $('#firstMost').text(sorted_activites[0][0]);
+    $('#secondMost').text(sorted_activites[1][0]);
+    $('#thirdMost').text(sorted_activites[2][0]);
 
 
 	activity_vis_spec = {

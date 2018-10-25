@@ -28,15 +28,15 @@ class Tweet {
     get writtenText():string {
         if(!this.written) {
             return "";
+        } else {
+            return this.text.slice(this.text.indexOf(' - ')+2,this.text.indexOf('https:'));
         }
-        //TODO: parse the written text from the tweet
-        return "";
     }
 
     get activityType():string {
         if (this.source != 'completed_event') {
             return "unknown";
-        } else if (!isNaN(parseFloat(this.text.slice([this.text.indexOf(' a ')+3],-1)))){
+        } else if (!isNaN(parseFloat(this.text.slice(this.text.indexOf(' a ')+3,-1)))){
             return this.text.split(' ')[5];
         } else {
             return this.text.split(' ')[3];
@@ -46,8 +46,10 @@ class Tweet {
     get distance():number {
         if(this.source != 'completed_event') {
             return 0;
-        } else if (!isNaN(parseFloat(this.text.slice([this.text.indexOf(' a ')+3],-1)))){
-            return parseFloat(this.text.slice([this.text.indexOf(' a ')+3],-1));
+        } else if (!isNaN(parseFloat(this.text.slice(this.text.indexOf(' a ')+3,-1))) && this.text.split(' ')[4] == 'mi'){
+            return parseFloat(this.text.slice(this.text.indexOf(' a ')+3,-1));
+        } else if (!isNaN(parseFloat(this.text.slice(this.text.indexOf(' a ')+3,-1))) && this.text.split(' ')[4] == 'km'){
+            return math.format(parseFloat(this.text.slice(this.text.indexOf(' a ')+3,-1)) / 1.609, {notation: 'fixed', precision: 2});
         } else {
             return 0;
         }

@@ -42,7 +42,6 @@ function parseTweets(runkeeper_tweets) {
     $('.miscellaneousPct').text(math.format(misc/tweet_array.length*100,  {notation: 'fixed', precision: 2}) + '%');
     $('.written').text(written_comp);
     $('.writtenPct').text(math.format(written_comp/completed*100,  {notation: 'fixed', precision: 2}) + '%');
-	//TODO: remove these
 	$('#firstDate').text(tweet_array[tweet_array.length - 1].time.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }));
 	$('#lastDate').text(tweet_array[0].time.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }));
 }

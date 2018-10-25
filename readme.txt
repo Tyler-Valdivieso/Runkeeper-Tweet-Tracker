@@ -2,7 +2,7 @@
 
 1. How long, in hours, did it take you to complete this assignment?
 
-- 7...so far
+- 14.5...so far
 
 
 
@@ -12,6 +12,7 @@
 - https://stackoverflow.com/questions/9050345/selecting-last-element-in-javascript-array
 - https://gomakethings.com/converting-strings-to-numbers-with-vanilla-javascript/
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values
+- https://vega.github.io/vega-lite/docs/sort.html
 
 
 

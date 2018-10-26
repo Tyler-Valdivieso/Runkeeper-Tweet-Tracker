@@ -49,9 +49,7 @@ function parseTweets(runkeeper_tweets) {
     $('#firstMost').text(sorted_activites[0][0]);
     $('#secondMost').text(sorted_activites[1][0]);
     $('#thirdMost').text(sorted_activites[2][0]);
-    $('#longestActivityType').text('bike');
-    $('#shortestActivityType').text('walk');
-    $('#weekdayOrWeekendLonger').text('the weekends (Saturday and Sunday)');
+    
 
 
 	activity_vis_spec = {
@@ -102,8 +100,28 @@ function parseTweets(runkeeper_tweets) {
     
     vegaEmbed('#distanceVisAggregated', means_top3_vis_spec, {actions:false});
 
-	//TODO: create the visualizations which group the three most-tweeted activities by the day of the week.
-	//Use those visualizations to answer the questions about which activities tended to be longest and when.
+	$('#longestActivityType').text('bike');
+    $('#shortestActivityType').text('walk');
+    $('#weekdayOrWeekendLonger').text('the weekends (Saturday and Sunday)');
+    
+    $(document).ready(function() {
+        $('#distanceVis').hide();
+        $('#distanceVisAggregated').hide();
+    });
+    
+        
+    $('#aggregate').click(function() {
+        if ($('#aggregate').text() == 'Show means'){
+            $('#distanceVis').hide();
+            $('#distanceVisAggregated').show();
+            $('#aggregate').text('Show all activities');
+        } else if ($('#aggregate').text() == 'Show all activities'){
+            $('#distanceVisAggregated').hide();
+            $('#distanceVis').show();
+            $('#aggregate').text('Show means');
+        }
+    });
+    
 }
 
 

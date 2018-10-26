@@ -105,7 +105,6 @@ function parseTweets(runkeeper_tweets) {
     $('#weekdayOrWeekendLonger').text('the weekends (Saturday and Sunday)');
     
     $(document).ready(function() {
-        $('#distanceVis').hide();
         $('#distanceVisAggregated').hide();
     });
     

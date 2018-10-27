@@ -16,6 +16,7 @@ function parseTweets(runkeeper_tweets) {
     var misc = 0;
     var written_comp = 0;
     
+    //loop through the tweet array and keep count of each event type's frequency
     for (var item = 0, len = tweet_array.length, text = ""; item < len; item++){
         if (tweet_array[item].written == true && tweet_array[item].source == 'completed_event'){
             written_comp += 1;
@@ -31,6 +32,7 @@ function parseTweets(runkeeper_tweets) {
         }
     }
 	
+    //displaying the information gathered
 	$('#numberTweets').text(tweet_array.length);
     $('.completedEvents').text(completed);
     $('.completedEventsPct').text(math.format(completed/tweet_array.length*100,  {notation: 'fixed', precision: 2}) + '%');

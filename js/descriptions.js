@@ -19,22 +19,19 @@ function parseTweets(runkeeper_tweets) {
     
     var written_num = 0;
     
-    $('#textFilter').change(function() {
+    //all event handling for 'What people are saying'
+    $('#textFilter').keyup(function() {
         written_num = 0;
         $('#tweetTable .wRow').each(function(){
-            $(this).remove(); //WHY ISNT IT DELETING THE ROWS!?!?!
+            $(this).remove(); //delete old rows after every new search
         });
         $('#searchText').text($('#textFilter').val());
         for (var item = 0, len = written_tweets.length, text = ""; item < len; item++){
-            if (written_tweets[item].writtenText.toLowerCase().includes($('#textFilter').val().toLowerCase()) && $('#textFilter').val() != '' ) {
+            if (written_tweets[item].writtenText.toLowerCase().includes($('#textFilter').val().toLowerCase()) && $('#textFilter').val() != '' ) { //if tweet contains the search string then add it to the table as a row
                 written_num += 1;
-                $('#tweetTable').append('<tr class = wRow>');
-                $('#tweetTable').append('<td>'+written_num+'</td>');
-                $('#tweetTable').append('<td>'+written_tweets[item].source+'</td>');
-                $('#tweetTable').append('<td class = written>'+written_tweets[item].writtenText+'</td></tr>');
-                //$('#tweetTable tbody').append('<tr class="child"><td>blahblah</td></tr>');
+                $('#tweetTable').append('<tr class = wRow><td>'+written_num+'</td><td>'+written_tweets[item].source+'</td><td>'+written_tweets[item].writtenText+' '+'<a href = '+(written_tweets[item].text.slice(written_tweets[item].text.indexOf('https:'))).split(' ')[0]+'>'+(written_tweets[item].text.slice(written_tweets[item].text.indexOf('https:'))).split(' ')[0]+'</a></td></tr>'); 
             }
-        } $('#searchCount').text(written_num);
+        } $('#searchCount').text(written_num); //display number of results
     });
     
     

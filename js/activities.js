@@ -51,7 +51,7 @@ function parseTweets(runkeeper_tweets) {
     $('#thirdMost').text(sorted_activites[2][0]);
     
 
-
+//my three different vegalite graphs
 	activity_vis_spec = {
 	  "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
 	  "description": "A graph of the number of Tweets containing each type of activity.",
@@ -100,6 +100,7 @@ function parseTweets(runkeeper_tweets) {
     
     vegaEmbed('#distanceVisAggregated', means_top3_vis_spec, {actions:false});
 
+    //longest & shortest activities according to my graphs
 	$('#longestActivityType').text('bike');
     $('#shortestActivityType').text('walk');
     $('#weekdayOrWeekendLonger').text('the weekends (Saturday and Sunday)');
@@ -108,7 +109,7 @@ function parseTweets(runkeeper_tweets) {
         $('#distanceVisAggregated').hide();
     });
     
-        
+    //this is where I flip flop the graphs once the button is pressed
     $('#aggregate').click(function() {
         if ($('#aggregate').text() == 'Show means'){
             $('#distanceVis').hide();

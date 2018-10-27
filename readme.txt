@@ -1,8 +1,8 @@
---Readme document for *author*--
+--Readme document for Tyler Valdivieso--
 
 1. How long, in hours, did it take you to complete this assignment?
 
-- 14.5...so far
+- 24...so far
 
 
 
